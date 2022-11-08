@@ -8,12 +8,20 @@
 
     <div id="app">
         <p>Curso: {{ curso }} | {{ nomeDoInstrutor() }}</p>
+        <!--atributo usando v-bind -->
         <a v-bind:href="docs">VueJS</a>
         <p>Instrutor: <span v-text="instrutor"></span></p>
+        <!--html puro usando v-html -->
         <p v-html="puro"></p>
+        <!--eventos nativos do DOM usando v-on -->
         <button v-on:click="incrementar">Clicks</button>
         <p>botao clicado {{ clicks }} vezes</p>
+        <!--mostrar um evento usando v-on -->
         <p v-on:mousemove="updatecrds">coordenadas x: {{ x }} e y: {{ y }}</p>
+        <!--passar um argumento junto com o evento-->
+        <input v-on:blur="exibirNome('Meu nome e: ', $event)">
+        <p>{{ nome }}</p>
+
     </div>
 
 
@@ -29,6 +37,7 @@
                 clicks: 0,
                 x: 0,
                 y: 0,
+                nome: '',
             },
             methods: {
                 nomeDoInstrutor: function() {
@@ -43,6 +52,10 @@
                 updatecrds: function(event){
                     this.x = event.clientX;
                     this.y = event.clientY;
+                },
+
+                exibirNome: function(texto, event){
+                    this.nome = texto + event.target.value;
                 }
             }
         });
