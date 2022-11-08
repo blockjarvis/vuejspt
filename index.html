@@ -10,6 +10,7 @@
         <p>Curso: {{ curso }} | {{ nomeDoInstrutor() }}</p>
         <a v-bind:href="docs">VueJS</a>
         <p>Instrutor: <span v-text="instrutor"></span></p>
+        <p v-html="puro"></p>
     </div>
 
 
@@ -21,6 +22,7 @@
                 curso: 'VueJS',
                 instrutor: 'Plinio',
                 docs: 'https://vuejs.org',
+                puro: 'html puro <span style="color: red"> com stilo</span>'
             },
             methods: {
                 nomeDoInstrutor: function() {
