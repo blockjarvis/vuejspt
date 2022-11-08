@@ -11,6 +11,8 @@
         <a v-bind:href="docs">VueJS</a>
         <p>Instrutor: <span v-text="instrutor"></span></p>
         <p v-html="puro"></p>
+        <button v-on:click="incrementar">Clicks</button>
+        <p>botao clicado {{ clicks }} vezes</p>
     </div>
 
 
@@ -22,11 +24,16 @@
                 curso: 'VueJS',
                 instrutor: 'Plinio',
                 docs: 'https://vuejs.org',
-                puro: 'html puro <span style="color: red"> com stilo</span>'
+                puro: 'html puro <span style="color: red"> com stilo</span>',
+                clicks: 0,
             },
             methods: {
                 nomeDoInstrutor: function() {
                     return this.instrutor;
+                },
+
+                incrementar: function() {
+                    this.clicks++;
                 }
             }
         });
