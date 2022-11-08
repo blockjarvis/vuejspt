@@ -13,6 +13,7 @@
         <p v-html="puro"></p>
         <button v-on:click="incrementar">Clicks</button>
         <p>botao clicado {{ clicks }} vezes</p>
+        <p v-on:mousemove="updatecrds">coordenadas x: {{ x }} e y: {{ y }}</p>
     </div>
 
 
@@ -26,14 +27,22 @@
                 docs: 'https://vuejs.org',
                 puro: 'html puro <span style="color: red"> com stilo</span>',
                 clicks: 0,
+                x: 0,
+                y: 0,
             },
             methods: {
                 nomeDoInstrutor: function() {
                     return this.instrutor;
                 },
 
-                incrementar: function() {
+                incrementar: function(event) {
+                    console.log(event)  
                     this.clicks++;
+                },
+
+                updatecrds: function(event){
+                    this.x = event.clientX;
+                    this.y = event.clientY;
                 }
             }
         });
